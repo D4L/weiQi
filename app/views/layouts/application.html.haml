@@ -1,0 +1,9 @@
+!!! 5
+%html
+  %head
+    %title WeiQi
+    = stylesheet_link_tag "application", :media => "all"
+    = csrf_meta_tags
+
+    %body
+      = yield
