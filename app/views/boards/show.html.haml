@@ -1,11 +1,18 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @board.title
+%b Title:
+= @board.title
+= @board.turn
+%br
+- (1..19).each do |y|
+  .row
+    - @board.peices.select {|r| r.y == y}.each do |p|
+      .peice
+        - if not p.colour
+          = link_to "a", board_peice_path(@board, p, :colour => @board.turn), :method => :put
+        - else
+          = p.colour
 
-  - @board.peices.each do |p|
-    = p
-
+.peice
 = link_to 'Edit', edit_board_path(@board) |
 = link_to 'Back', boards_path

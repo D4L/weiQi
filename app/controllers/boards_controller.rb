@@ -40,7 +40,7 @@ class BoardsController < ApplicationController
   # POST /boards
   # POST /boards.json
   def create
-    @board = Board.new(params[:board])
+    @board = Board.new(params[:board].merge({:turn => "white"}))
 
     respond_to do |format|
       if @board.save
@@ -79,5 +79,13 @@ class BoardsController < ApplicationController
       format.html { redirect_to boards_url }
       format.json { head :no_content }
     end
+  end
+
+  def fill_peice
+    @board = Board.find(params[:id])
+
+    p "@@@@@@@@@@@@@@@@@@@@@@@@@2#{params}"
+    p params[:color]
+
   end
 end
