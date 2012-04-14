@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $('.empty a').hover(function () {
+    $(this).addClass($(this).parent().attr("color"));
+  }, function () {
+    $(this).removeClass($(this).parent().attr("color"));
+  });
+});

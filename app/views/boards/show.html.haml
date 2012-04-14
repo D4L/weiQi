@@ -4,15 +4,17 @@
 = @board.title
 = @board.turn
 %br
-- (1..19).each do |y|
-  .row
-    - @board.peices.select {|r| r.y == y}.each do |p|
-      .peice
-        - if not p.colour
-          = link_to "a", board_peice_path(@board, p, :colour => @board.turn), :method => :put
-        - else
-          = p.colour
+.board
+  - (1..19).each do |y|
+    .row
+      - @board.peices.select {|r| r.y == y}.each do |p|
+        .peice
+          - if not p.colour
+            .empty{:color => @board.turn}= link_to raw("&nbsp;"), board_peice_path(@board, p, :colour => @board.turn), :method => :put
+          - else
+            %div{:class => p.colour}
 
-.peice
+.snapple
+  hello
 = link_to 'Edit', edit_board_path(@board) |
 = link_to 'Back', boards_path
