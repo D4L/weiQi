@@ -5,6 +5,12 @@
 = @board.turn
 %br
 .board
+  .grid
+    - (1..18).each do |y|
+      .gridrow
+        - (1..18).each do |p|
+          .gridpeice &nbsp;
+
   - (1..19).each do |y|
     .row
       - @board.peices.select {|r| r.y == y}.each do |p|
@@ -14,7 +20,5 @@
           - else
             %div{:class => p.colour}
 
-.snapple
-  hello
 = link_to 'Edit', edit_board_path(@board) |
 = link_to 'Back', boards_path
